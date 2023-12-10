@@ -1,0 +1,20 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "clang++",  // Adjust this based on your compiler (e.g., "clang++" for Clang)
+            "args": [
+                "-g",  // Add debugging information (optional)
+                "derivative_calculator.cpp",
+                "-o",
+                "derivative_calculator"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
