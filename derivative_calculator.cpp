@@ -3,6 +3,10 @@
 #include <sstream>
 #include <cmath>
 
+DerivativeCalculator::DerivativeCalculator() {}
+
+
+
 std::string DerivativeCalculator::calculateDerivative(const std::string& polynomial) {
     std::vector<Term> terms = parsePolynomial(polynomial);
     std::vector<Term> derivativeTerms;
@@ -40,8 +44,8 @@ std::vector<DerivativeCalculator::Term> DerivativeCalculator::parsePolynomial(co
         termParts >> term.coefficient;
 
         if (termParts.peek() == 'x') {
-            termParts.ignore(); // ignore 'x'
-            termParts.ignore(); // ignore '^'
+            termParts.ignore(); 
+            termParts.ignore(); 
             termParts >> term.exponent;
         } else {
             term.exponent = 0;
@@ -54,7 +58,7 @@ std::vector<DerivativeCalculator::Term> DerivativeCalculator::parsePolynomial(co
 }
 
 std::string DerivativeCalculator::formatTerm(const Term& term) {
-    // Format the term as a string
+
     if (term.exponent == 0) {
         return std::to_string(term.coefficient);
     } else if (term.exponent == 1) {
@@ -65,10 +69,12 @@ std::string DerivativeCalculator::formatTerm(const Term& term) {
 }
 
 int main() {
-    // Example usage of the DerivativeCalculator
+
     DerivativeCalculator calculator;
     std::string polynomial;
+    std::string response;
 
+    do{
     // Get user input for the polynomial
     std::cout << "Enter a polynomial: ";
     std::getline(std::cin, polynomial);
@@ -76,6 +82,12 @@ int main() {
     // Calculate and display the derivative
     std::string derivative = calculator.calculateDerivative(polynomial);
     std::cout << "Derivative: " << derivative << std::endl;
+
+
+    std::cout << "Would you like to calculate another derivative?\nEnter y to continue or any other keys to exit.\n";
+    std::getline(std::cin, response);
+    }while(response == "y");
+
 
     return 0;
 }

@@ -14,7 +14,6 @@ public:
     */
     DerivativeCalculator();
 
-
     /*
     calculatorDerivative - calculates the derivative of each 
                             individual term for the polynomial
